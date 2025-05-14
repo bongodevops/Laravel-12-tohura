@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\DemoController;
-
+use App\Http\Controllers\TemplateController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -32,3 +32,9 @@ Route::get('/download/invoice', [FileController::class, 'error']);
 Route::get('/download/invoice/{invoiceId}',action: [FileController::class,'downloadId']);
 Route::get('/download/invoice/{invoiceId}/type/{FileType?}',action: [FileController::class,'downloadIdWithFileType']);
 Route::get('/download/invoice', action: [FileController::class, 'error']);
+
+////
+Route::get('/', [TemplateController::class, 'home'])->name('home');
+Route::get('/about', [TemplateController::class, 'about'])->name('about');
+Route::get('/shop', [TemplateController::class,'shop'])->name('shop');
+Route::get('/contact', [TemplateController::class,'contact'])->name('contact');
